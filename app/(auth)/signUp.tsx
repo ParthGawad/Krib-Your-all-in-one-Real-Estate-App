@@ -1,10 +1,9 @@
-import { View, Text, ScrollView, Image, FlatList, TextInput, Touchable, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
-import React from 'react'
+import { View, Text, ScrollView, Image, TextInput, TouchableOpacity, ActivityIndicator, Alert } from 'react-native'
+import React, { useState } from 'react'
 import { useAuth, useSignUp } from '@clerk/expo'
-import { useState } from 'react'
-import { Link, router } from 'expo-router';
+import { Link } from 'expo-router';
 
-export default function signUp() {
+export default function SignUp() {
     // signup states
     const { signUp, errors, fetchStatus } = useSignUp();
     const { isSignedIn } = useAuth()
@@ -19,7 +18,7 @@ export default function signUp() {
     // loading state
     const isLoading = fetchStatus === "fetching";
 
-    if (signUp.status == "complete" && isSignedIn) {
+    if (signUp.status === "complete" && isSignedIn) {
         return null
     }
 
@@ -40,7 +39,7 @@ export default function signUp() {
         } else // sends an code to the respective entered email
             await signUp.verifications.sendEmailCode()
 
-        if (signUp.status == "missing_requirements" && signUp.unverifiedFields.includes('email_address') && signUp.missingFields.length == 0) {
+        if (signUp.status === "missing_requirements" && signUp.unverifiedFields.includes('email_address') && signUp.missingFields.length === 0) {
             Alert.alert("Success", "Verification code sent to your email")
             setIsVerify(true)
         }
@@ -53,13 +52,8 @@ export default function signUp() {
             code,
         })
 
-        if (signUp.status == "complete") {
-            await signUp.finalize({
-                navigate: ({ decorateUrl }) => {
-                    const url = decorateUrl('/(tabs)')
-                    router.replace(url as any)
-                }
-            })
+        if (signUp.status === "complete") {
+            await signUp.finalize()
         }
     }
 
