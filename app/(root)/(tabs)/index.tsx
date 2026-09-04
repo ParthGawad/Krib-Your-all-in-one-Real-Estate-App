@@ -1,12 +1,13 @@
-import { View, Text, FlatList, Alert, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
-import React, { useCallback, useState } from 'react'
-import { useUser } from '@clerk/expo'
-import { useFocusEffect, useRouter } from 'expo-router'
-import { Property } from '../../../types/interface'
-import { SafeAreaView } from 'react-native-safe-area-context'
-import { supabase } from '@/lib/supabase'
-import Ionicons from '@expo/vector-icons/Ionicons'
 import Featured from '@/components/Featured'
+import Propertycard from '@/components/Propertycard'
+import { supabase } from '@/lib/supabase'
+import { useUser } from '@clerk/expo'
+import Ionicons from '@expo/vector-icons/Ionicons'
+import { useFocusEffect, useRouter } from 'expo-router'
+import React, { useCallback, useState } from 'react'
+import { ActivityIndicator, Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { Property } from '../../../types/interface'
 
 // Home page
 export default function index() {
@@ -38,8 +39,8 @@ export default function index() {
                 .eq("is_featured", false)
                 .order("created_at", { ascending: false })
 
-            setFeatured(featuredData ?? [])
-            setRecommended(recommendedData ?? [])
+            setFeatured(featuredData ?? ["Unenable to fetch the data from database"])
+            setRecommended(recommendedData ?? ["Unenable to fetch the data from database"])
             setLoading(false)
         } catch (error) {
             Alert.alert("An Error occurred while fetching : ", error as string)
@@ -125,7 +126,7 @@ export default function index() {
                 }
                 renderItem={({ item }) => (
                     <View className='px-5'>
-                        <Text className='font-bold text-lg'>{item.title}</Text>
+                        <Propertycard property={item} />
                     </View>
                 )}
                 ListEmptyComponent={
