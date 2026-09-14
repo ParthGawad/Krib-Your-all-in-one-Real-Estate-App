@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase'
 import { useUser } from '@clerk/expo'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useFocusEffect, useRouter } from 'expo-router'
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ActivityIndicator, Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Property } from '../../../types/interface'
@@ -55,7 +55,7 @@ export default function index() {
         }, [])
     )
 
-    console.log(JSON.stringify(featured, null, 2), JSON.stringify(recommended, null, 2))
+    // console.log(JSON.stringify(featured, null, 2), JSON.stringify(recommended, null, 2))
 
     return (
         <SafeAreaView>
@@ -75,9 +75,11 @@ export default function index() {
                                 resizeMode='contain'
                             />
 
+                            {/* user name & greeting */}
                             <View className='items-end'>
                                 <Text className='text-gray-900 text-lg font-bold'>Welcome, {user?.firstName ?? "user"}</Text>
                             </View>
+
                         </View>
 
                         {/* Search bar */}
