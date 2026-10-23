@@ -1,13 +1,14 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import { useSavedProperty } from '@/hooks/useSavedProperty'
 import { Property } from '@/types/interface'
-import { useRouter } from 'expo-router'
 import Ionicons from '@expo/vector-icons/Ionicons'
+import { useRouter } from 'expo-router'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 
 export default function Propertycard({ property, onUnsave, showsave }: { property: Property, onUnsave?: () => void, showsave?: boolean }) {
     const router = useRouter()
-    const [isSaved, setIsSaved] = useState(false) // save icon state
+    // const [isSaved, setIsSaved] = useState(false) // save icon state
 
+    const { isSaved, saveLoading, toggleSave } = useSavedProperty(property.id, onUnsave)
     return (
         <TouchableOpacity
             className='flex-row w-full mr-2 rounded-2xl overflow-hidden bg-white shadow-gray-50 shadow-lg elevation-lg mt-5'
@@ -27,7 +28,7 @@ export default function Propertycard({ property, onUnsave, showsave }: { propert
                     </Text>
 
                     {/* save icon */}
-                    <TouchableOpacity className='w-10 items-center' onPress={() => { setIsSaved(!isSaved) }}>
+                    <TouchableOpacity onPress={toggleSave} disabled={saveLoading} className='w-10 items-center'>
                         <Ionicons name={isSaved ? "heart" : "heart-outline"} size={17} color={isSaved ? "red" : "gray"} />
                     </TouchableOpacity>
 

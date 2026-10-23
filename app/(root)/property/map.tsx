@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Linking, Text, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import WebView from 'react-native-webview';
 
 export default function map() {
     const { latitude, longitude, title, address } = useLocalSearchParams<{ latitude: string, longitude: string, title: string, address: string }>();
@@ -27,10 +28,13 @@ export default function map() {
                 </View>
 
                 <TouchableOpacity onPress={() => Linking.openURL(`https://www.google.com/maps?q=${lat},${log}`)} className='flex-row items-center gap-1 bg-blue-50 px-3 py-2 rounded-full'>
-                    <Ionicons name="navigate-outline" />
+                    <Ionicons name="navigate-outline" size={14} color="#2563EB" />
+                    <Text className='text-xs text-blue-600 font-semibold'>Google Maps</Text>
                 </TouchableOpacity>
 
             </View>
+
+            <WebView source={{ uri: mapUrl }} style={{ flex: 1 }} />
         </SafeAreaView>
     )
 }

@@ -285,6 +285,7 @@ export default function PropertyDetailScreen() {
                     <TouchableOpacity
                         onPress={() =>
                             router.push({
+                                // @ts-expect-error
                                 pathname: "/(root)/property/map",
                                 params: {
                                     latitude: property.latitude,
