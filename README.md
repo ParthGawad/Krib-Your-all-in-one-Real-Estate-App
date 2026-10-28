@@ -11,6 +11,14 @@
 
 > A modern, production-ready, full-stack real estate mobile application built for iOS and Android. **Krib** connects homebuyers and renters with real estate properties through an intuitive, high-performance interface featuring live filtering, GPS geolocation, interactive maps, direct agent messaging, and role-based property management.
 
+<img width="720" height="1600" alt="Home Page" src="https://github.com/user-attachments/assets/29df50f8-d7e6-4010-822f-721658773ec9" />
+<img width="720" height="1600" alt="Search Page" src="https://github.com/user-attachments/assets/c914c864-f895-42e8-b112-8f96329f32ae" />
+<img width="720" height="1600" alt="Property Detail page" src="https://github.com/user-attachments/assets/47b98eac-69b5-4af5-966c-2108d92981af" />
+<img width="720" height="1600" alt="Profile Page" src="https://github.com/user-attachments/assets/09df205c-a58a-4429-a3d8-27d4ac89e694" />
+<img width="720" height="1600" alt="Create page" src="https://github.com/user-attachments/assets/745a3894-56a5-4d5e-a49e-4c4cced3d4f7" />
+<img width="720" height="1600" alt=" Save Page" src="https://github.com/user-attachments/assets/7ab6247d-ee30-4bed-8379-420468afba9d" />
+
+
 ---
 
 ## 📑 Table of Contents
